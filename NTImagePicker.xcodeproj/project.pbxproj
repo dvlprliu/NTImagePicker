@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0608D82183C8071009469DE /* NTPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D81183C8071009469DE /* NTPhotosViewController.m */; };
+		E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D84183C86BA009469DE /* PhotoCollectionViewDataSource.m */; };
+		E0608D88183C89C2009469DE /* NTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D87183C89C2009469DE /* NTPhoto.m */; };
+		E0608D8F183C92EB009469DE /* NTPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D8E183C92EB009469DE /* NTPhotoCell.m */; };
+		E0608D91183C9316009469DE /* NTPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0608D90183C9316009469DE /* NTPhotoCell.xib */; };
 		E063BF09183C4F1500293D33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF08183C4F1500293D33 /* Foundation.framework */; };
 		E063BF0B183C4F1500293D33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF0A183C4F1500293D33 /* CoreGraphics.framework */; };
 		E063BF0D183C4F1500293D33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF0C183C4F1500293D33 /* UIKit.framework */; };
@@ -21,6 +26,13 @@
 		E063BF2A183C4F1500293D33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF0C183C4F1500293D33 /* UIKit.framework */; };
 		E063BF32183C4F1500293D33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E063BF30183C4F1500293D33 /* InfoPlist.strings */; };
 		E063BF34183C4F1500293D33 /* NTImagePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF33183C4F1500293D33 /* NTImagePickerTests.m */; };
+		E063BF3E183C50B000293D33 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF3D183C50B000293D33 /* AssetsLibrary.framework */; };
+		E063BF41183C511600293D33 /* NTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF40183C511600293D33 /* NTNavigationController.m */; };
+		E063BF44183C51BB00293D33 /* NTSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF43183C51BB00293D33 /* NTSuperViewController.m */; };
+		E063BF47183C51FD00293D33 /* NTAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF46183C51FD00293D33 /* NTAlbumViewController.m */; };
+		E0A1684A183C5A3900608985 /* AlbumTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A16849183C5A3900608985 /* AlbumTableDataSource.m */; };
+		E0A1684D183C704F00608985 /* AssetParseEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A1684C183C704F00608985 /* AssetParseEngine.m */; };
+		E0A16850183C727900608985 /* NTAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A1684F183C727900608985 /* NTAlbum.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +46,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0608D80183C8071009469DE /* NTPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPhotosViewController.h; sourceTree = "<group>"; };
+		E0608D81183C8071009469DE /* NTPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTPhotosViewController.m; sourceTree = "<group>"; };
+		E0608D83183C86BA009469DE /* PhotoCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewDataSource.h; sourceTree = "<group>"; };
+		E0608D84183C86BA009469DE /* PhotoCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewDataSource.m; sourceTree = "<group>"; };
+		E0608D86183C89C2009469DE /* NTPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPhoto.h; sourceTree = "<group>"; };
+		E0608D87183C89C2009469DE /* NTPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTPhoto.m; sourceTree = "<group>"; };
+		E0608D8D183C92EB009469DE /* NTPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPhotoCell.h; sourceTree = "<group>"; };
+		E0608D8E183C92EB009469DE /* NTPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTPhotoCell.m; sourceTree = "<group>"; };
+		E0608D90183C9316009469DE /* NTPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTPhotoCell.xib; sourceTree = "<group>"; };
 		E063BF05183C4F1500293D33 /* NTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E063BF08183C4F1500293D33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E063BF0A183C4F1500293D33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +74,19 @@
 		E063BF2F183C4F1500293D33 /* NTImagePickerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NTImagePickerTests-Info.plist"; sourceTree = "<group>"; };
 		E063BF31183C4F1500293D33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E063BF33183C4F1500293D33 /* NTImagePickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NTImagePickerTests.m; sourceTree = "<group>"; };
+		E063BF3D183C50B000293D33 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		E063BF3F183C511600293D33 /* NTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNavigationController.h; sourceTree = "<group>"; };
+		E063BF40183C511600293D33 /* NTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNavigationController.m; sourceTree = "<group>"; };
+		E063BF42183C51BB00293D33 /* NTSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSuperViewController.h; sourceTree = "<group>"; };
+		E063BF43183C51BB00293D33 /* NTSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSuperViewController.m; sourceTree = "<group>"; };
+		E063BF45183C51FD00293D33 /* NTAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAlbumViewController.h; sourceTree = "<group>"; };
+		E063BF46183C51FD00293D33 /* NTAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAlbumViewController.m; sourceTree = "<group>"; };
+		E0A16848183C5A3900608985 /* AlbumTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableDataSource.h; sourceTree = "<group>"; };
+		E0A16849183C5A3900608985 /* AlbumTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableDataSource.m; sourceTree = "<group>"; };
+		E0A1684B183C704F00608985 /* AssetParseEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetParseEngine.h; sourceTree = "<group>"; };
+		E0A1684C183C704F00608985 /* AssetParseEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetParseEngine.m; sourceTree = "<group>"; };
+		E0A1684E183C727900608985 /* NTAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAlbum.h; sourceTree = "<group>"; };
+		E0A1684F183C727900608985 /* NTAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAlbum.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E063BF3E183C50B000293D33 /* AssetsLibrary.framework in Frameworks */,
 				E063BF0B183C4F1500293D33 /* CoreGraphics.framework in Frameworks */,
 				E063BF0D183C4F1500293D33 /* UIKit.framework in Frameworks */,
 				E063BF09183C4F1500293D33 /* Foundation.framework in Frameworks */,
@@ -79,6 +114,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0608D89183C9172009469DE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E063BF3F183C511600293D33 /* NTNavigationController.h */,
+				E063BF40183C511600293D33 /* NTNavigationController.m */,
+				E063BF42183C51BB00293D33 /* NTSuperViewController.h */,
+				E063BF43183C51BB00293D33 /* NTSuperViewController.m */,
+				E063BF45183C51FD00293D33 /* NTAlbumViewController.h */,
+				E063BF46183C51FD00293D33 /* NTAlbumViewController.m */,
+				E0608D80183C8071009469DE /* NTPhotosViewController.h */,
+				E0608D81183C8071009469DE /* NTPhotosViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E0608D8A183C9184009469DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0A1684E183C727900608985 /* NTAlbum.h */,
+				E0A1684F183C727900608985 /* NTAlbum.m */,
+				E0608D86183C89C2009469DE /* NTPhoto.h */,
+				E0608D87183C89C2009469DE /* NTPhoto.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E0608D8B183C9192009469DE /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E0608D83183C86BA009469DE /* PhotoCollectionViewDataSource.h */,
+				E0608D84183C86BA009469DE /* PhotoCollectionViewDataSource.m */,
+				E0A16848183C5A3900608985 /* AlbumTableDataSource.h */,
+				E0A16849183C5A3900608985 /* AlbumTableDataSource.m */,
+				E0A1684B183C704F00608985 /* AssetParseEngine.h */,
+				E0A1684C183C704F00608985 /* AssetParseEngine.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		E0608D8C183C9207009469DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0608D8D183C92EB009469DE /* NTPhotoCell.h */,
+				E0608D8E183C92EB009469DE /* NTPhotoCell.m */,
+				E0608D90183C9316009469DE /* NTPhotoCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E063BEFC183C4F1500293D33 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +185,7 @@
 		E063BF07183C4F1500293D33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E063BF3D183C50B000293D33 /* AssetsLibrary.framework */,
 				E063BF08183C4F1500293D33 /* Foundation.framework */,
 				E063BF0A183C4F1500293D33 /* CoreGraphics.framework */,
 				E063BF0C183C4F1500293D33 /* UIKit.framework */,
@@ -118,6 +203,10 @@
 				E063BF1D183C4F1500293D33 /* ViewController.h */,
 				E063BF1E183C4F1500293D33 /* ViewController.m */,
 				E063BF20183C4F1500293D33 /* Images.xcassets */,
+				E0608D8A183C9184009469DE /* Model */,
+				E0608D8C183C9207009469DE /* View */,
+				E0608D89183C9172009469DE /* Controllers */,
+				E0608D8B183C9192009469DE /* Util */,
 				E063BF0F183C4F1500293D33 /* Supporting Files */,
 			);
 			path = NTImagePicker;
@@ -228,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0608D91183C9316009469DE /* NTPhotoCell.xib in Resources */,
 				E063BF21183C4F1500293D33 /* Images.xcassets in Resources */,
 				E063BF13183C4F1500293D33 /* InfoPlist.strings in Resources */,
 				E063BF1C183C4F1500293D33 /* Main.storyboard in Resources */,
@@ -249,8 +339,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E063BF47183C51FD00293D33 /* NTAlbumViewController.m in Sources */,
 				E063BF1F183C4F1500293D33 /* ViewController.m in Sources */,
+				E063BF44183C51BB00293D33 /* NTSuperViewController.m in Sources */,
+				E0A1684A183C5A3900608985 /* AlbumTableDataSource.m in Sources */,
+				E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */,
+				E0608D8F183C92EB009469DE /* NTPhotoCell.m in Sources */,
+				E063BF41183C511600293D33 /* NTNavigationController.m in Sources */,
+				E0A16850183C727900608985 /* NTAlbum.m in Sources */,
 				E063BF19183C4F1500293D33 /* AppDelegate.m in Sources */,
+				E0608D88183C89C2009469DE /* NTPhoto.m in Sources */,
+				E0608D82183C8071009469DE /* NTPhotosViewController.m in Sources */,
+				E0A1684D183C704F00608985 /* AssetParseEngine.m in Sources */,
 				E063BF15183C4F1500293D33 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +560,7 @@
 				E063BF39183C4F1500293D33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E063BF3A183C4F1500293D33 /* Build configuration list for PBXNativeTarget "NTImagePickerTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +569,7 @@
 				E063BF3C183C4F1500293D33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

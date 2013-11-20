@@ -7,12 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "NTNavigationController.h"
+#import "NTAlbumViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NTAlbumViewController *albumViewController = [[NTAlbumViewController alloc] init];
+    
+    _navigationController = [[NTNavigationController alloc] initWithRootViewController:albumViewController];
+    
+    [self.window setRootViewController:_navigationController];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							
