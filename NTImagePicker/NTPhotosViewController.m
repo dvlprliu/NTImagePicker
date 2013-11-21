@@ -10,11 +10,15 @@
 #import "PhotoCollectionViewDataSource.h"
 #import "NTPhotoCell.h"
 #import "NTPhoto.h"
+#import "ImageStorage.h"
+#import "ImageContainerView.h"
 @import AssetsLibrary;
 
 @interface NTPhotosViewController ()
 {
-    PhotoCollectionViewDataSource *_dataSource;
+    PhotoCollectionViewDataSource   *_dataSource;
+    ImageContainerView              *_imageContainer;
+    NSMutableArray                  *_selectedPhotos;
 }
 
 @end
@@ -36,6 +40,8 @@
     
     [self setupCollectionView];
     [self getAllPhotosFromAssetGroup];
+    [self setupContainerView];
+    
 }
 
 - (void)dealloc
@@ -56,32 +62,60 @@
         if (result) {
             NTPhoto *photo = [[NTPhoto alloc] init];
             [photo getThumbnailFromAsset:result];
+            photo.groupBelonged = [self.group valueForProperty:ALAssetsGroupPropertyName];
             [self.photos addObject:photo];
         }
         
         if (stop) {
-            _dataSource.photos = self.photos;
-            [_collectionView reloadData];
         }
     }];
+    _dataSource.photos = self.photos;
+    [_collectionView reloadData];
+    
+    NSMutableArray *selectedPhotos =  [ImageStorage sharedStorage].storedPhotos;
+    
+    for (int i = 0 ; i < selectedPhotos.count; i ++) {
+        NTPhoto *photo = selectedPhotos[i];
+        if ([photo.groupBelonged isEqualToString:[self.group valueForProperty:ALAssetsGroupPropertyName]]) {
+            NSIndexPath *indexPath = photo.indexPath;
+            NTPhoto *replacementPhoto = self.photos[indexPath.item];
+            [selectedPhotos replaceObjectAtIndex:i withObject:replacementPhoto];
+        }
+    }
+}
+
+- (void)setupContainerView
+{
+    if (!_imageContainer) {
+        _imageContainer = [[ImageContainerView alloc] initWithFrame:(CGRect){
+            .origin.x = 0,
+            .origin.y = SCREEN_HEIGHT - CONTAINER_HEIGHT,
+            .size.width  = SCREEN_WIDTH,
+            .size.height = CONTAINER_HEIGHT
+        }];
+        _imageContainer.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:_imageContainer];
+    }
 }
 
 - (void)setupCollectionView
 {
-    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.itemSize = CGSizeMake(73, 73);
     flowLayout.minimumInteritemSpacing = 5;
     flowLayout.minimumLineSpacing = 5;
+    flowLayout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, 90);
     
     _dataSource = [[PhotoCollectionViewDataSource alloc] init];
+    _dataSource.groupName = [self.group valueForProperty:ALAssetsGroupPropertyName];
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     _collectionView.dataSource = _dataSource;
     _collectionView.delegate   = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerNib:[UINib nibWithNibName:@"NTPhotoCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFER];
     [self.view addSubview:_collectionView];
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -89,8 +123,21 @@
     NTPhotoCell *cell = (NTPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NTPhoto *photo = self.photos[indexPath.item];
     photo.checked = !photo.checked;
-    NSLog(@"checked : %d", photo.checked);
     cell.checked = photo.checked;
+    
+    if (!_selectedPhotos) {
+        _selectedPhotos = [[NSMutableArray alloc] init];
+    }
+    
+    ImageStorage *storage = [ImageStorage sharedStorage];
+    [storage initilizeStoredPhotos];
+    photo.checked ? [storage.storedPhotos addObject:photo] : [storage.storedPhotos removeObject:photo];
+
+    if (_selectedPhotos.count == 0) {
+        _selectedPhotos = nil;
+    }
+    
+    NSLog(@"storage.storedImage : %@", storage.storedPhotos);
     
 }
 

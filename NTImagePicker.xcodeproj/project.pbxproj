@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0297CE2183DB16C00CF05D2 /* NTImageStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E0297CE1183DB16C00CF05D2 /* NTImageStorage.m */; };
 		E0608D82183C8071009469DE /* NTPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D81183C8071009469DE /* NTPhotosViewController.m */; };
 		E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D84183C86BA009469DE /* PhotoCollectionViewDataSource.m */; };
 		E0608D88183C89C2009469DE /* NTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D87183C89C2009469DE /* NTPhoto.m */; };
 		E0608D8F183C92EB009469DE /* NTPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D8E183C92EB009469DE /* NTPhotoCell.m */; };
 		E0608D91183C9316009469DE /* NTPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0608D90183C9316009469DE /* NTPhotoCell.xib */; };
+		E0608D94183CB61D009469DE /* ImageContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D93183CB61D009469DE /* ImageContainerView.m */; };
+		E0608D97183CB6BF009469DE /* ImageStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D96183CB6BF009469DE /* ImageStorage.m */; };
 		E063BF09183C4F1500293D33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF08183C4F1500293D33 /* Foundation.framework */; };
 		E063BF0B183C4F1500293D33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF0A183C4F1500293D33 /* CoreGraphics.framework */; };
 		E063BF0D183C4F1500293D33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E063BF0C183C4F1500293D33 /* UIKit.framework */; };
@@ -46,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0297CE0183DB16C00CF05D2 /* NTImageStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTImageStorage.h; sourceTree = "<group>"; };
+		E0297CE1183DB16C00CF05D2 /* NTImageStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTImageStorage.m; sourceTree = "<group>"; };
 		E0608D80183C8071009469DE /* NTPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPhotosViewController.h; sourceTree = "<group>"; };
 		E0608D81183C8071009469DE /* NTPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTPhotosViewController.m; sourceTree = "<group>"; };
 		E0608D83183C86BA009469DE /* PhotoCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewDataSource.h; sourceTree = "<group>"; };
@@ -55,6 +60,10 @@
 		E0608D8D183C92EB009469DE /* NTPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPhotoCell.h; sourceTree = "<group>"; };
 		E0608D8E183C92EB009469DE /* NTPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTPhotoCell.m; sourceTree = "<group>"; };
 		E0608D90183C9316009469DE /* NTPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTPhotoCell.xib; sourceTree = "<group>"; };
+		E0608D92183CB61D009469DE /* ImageContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageContainerView.h; sourceTree = "<group>"; };
+		E0608D93183CB61D009469DE /* ImageContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageContainerView.m; sourceTree = "<group>"; };
+		E0608D95183CB6BF009469DE /* ImageStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStorage.h; sourceTree = "<group>"; };
+		E0608D96183CB6BF009469DE /* ImageStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStorage.m; sourceTree = "<group>"; };
 		E063BF05183C4F1500293D33 /* NTImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E063BF08183C4F1500293D33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E063BF0A183C4F1500293D33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -149,6 +158,10 @@
 				E0A16849183C5A3900608985 /* AlbumTableDataSource.m */,
 				E0A1684B183C704F00608985 /* AssetParseEngine.h */,
 				E0A1684C183C704F00608985 /* AssetParseEngine.m */,
+				E0608D95183CB6BF009469DE /* ImageStorage.h */,
+				E0608D96183CB6BF009469DE /* ImageStorage.m */,
+				E0297CE0183DB16C00CF05D2 /* NTImageStorage.h */,
+				E0297CE1183DB16C00CF05D2 /* NTImageStorage.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -159,6 +172,8 @@
 				E0608D8D183C92EB009469DE /* NTPhotoCell.h */,
 				E0608D8E183C92EB009469DE /* NTPhotoCell.m */,
 				E0608D90183C9316009469DE /* NTPhotoCell.xib */,
+				E0608D92183CB61D009469DE /* ImageContainerView.h */,
+				E0608D93183CB61D009469DE /* ImageContainerView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -341,7 +356,10 @@
 			files = (
 				E063BF47183C51FD00293D33 /* NTAlbumViewController.m in Sources */,
 				E063BF1F183C4F1500293D33 /* ViewController.m in Sources */,
+				E0608D94183CB61D009469DE /* ImageContainerView.m in Sources */,
+				E0608D97183CB6BF009469DE /* ImageStorage.m in Sources */,
 				E063BF44183C51BB00293D33 /* NTSuperViewController.m in Sources */,
+				E0297CE2183DB16C00CF05D2 /* NTImageStorage.m in Sources */,
 				E0A1684A183C5A3900608985 /* AlbumTableDataSource.m in Sources */,
 				E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */,
 				E0608D8F183C92EB009469DE /* NTPhotoCell.m in Sources */,

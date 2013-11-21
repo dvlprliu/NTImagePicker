@@ -11,5 +11,6 @@
 @interface PhotoCollectionViewDataSource : NSObject<UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSString *groupName;
 
 @end

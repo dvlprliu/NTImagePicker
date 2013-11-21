@@ -63,8 +63,8 @@
     }
     
     __unsafe_unretained NTAlbumViewController * bself = self;
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    
         [_assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
             
             if (group) {
@@ -79,7 +79,7 @@
 #pragma TODO ---
         }];
         
-    });
+//    });
     
 }
 

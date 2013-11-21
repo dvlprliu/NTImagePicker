@@ -9,6 +9,7 @@
 #import "PhotoCollectionViewDataSource.h"
 #import "NTPhotoCell.h"
 #import "NTPhoto.h"
+#import "ImageStorage.h"
 
 @implementation PhotoCollectionViewDataSource
 
@@ -31,8 +32,27 @@
     NTPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFER forIndexPath:indexPath];
     
     NTPhoto *photo = self.photos[indexPath.row];
+    photo.indexPath = indexPath;
     cell.checked = photo.checked;
     [cell.PhotoImageView setImage:photo.thumnail];
+    
+    NSMutableArray *selectedPhotos = [ImageStorage sharedStorage].storedPhotos;
+    
+
+    
+    if (selectedPhotos.count > 0) {
+        for (NTPhoto *photo in selectedPhotos) {
+            if ([photo.groupBelonged isEqualToString:self.groupName]) {
+                NTPhotoCell *selectedCell = (NTPhotoCell *)[collectionView cellForItemAtIndexPath:photo.indexPath];
+//                NTPhoto *aPhoto = self.photos[photo.indexPath.item];
+                photo.checked = YES;
+                selectedCell.checked = YES;
+            }
+        }
+
+    }
+    
+    
     
     return cell;
 }

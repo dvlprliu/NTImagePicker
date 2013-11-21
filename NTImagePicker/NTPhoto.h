@@ -12,10 +12,15 @@
 
 @interface NTPhoto : NSObject
 
-@property (nonatomic, strong) UIImage   *thumnail;
-@property (nonatomic, strong) UIImage   *rawImage;
-@property (nonatomic, assign) BOOL      checked;
+@property (nonatomic, strong) UIImage       *thumnail;
+@property (nonatomic, strong) UIImage       *rawImage;
+@property (nonatomic, assign) BOOL          checked;
+@property (nonatomic, strong) NSIndexPath   *indexPath;
+@property (nonatomic, strong) NSString      *groupBelonged;
 
+- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath;
 - (UIImage *)getThumbnailFromAsset:(ALAsset *)asset;
+
+- (BOOL)compareTo:(NTPhoto *)otherPhoto;
 
 @end
