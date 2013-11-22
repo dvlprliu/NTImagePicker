@@ -94,16 +94,7 @@
             .size.height = CONTAINER_HEIGHT
         };
         _imageContainer.backgroundColor = [UIColor blackColor];
-        __unsafe_unretained UICollectionView *cltv = _collectionView;
-        __unsafe_unretained typeof(self) bself = self;
-        _imageContainer.didDeselectPhotoBlock = ^(ImageContainerView *containerView, NTPhoto *photo) {
-            NTPhotoCell *cell = (NTPhotoCell *)[cltv cellForItemAtIndexPath:photo.indexPath];
-            if ([photo.groupBelonged isEqualToString:[bself.group valueForProperty:ALAssetsGroupPropertyName]]) {
-                photo.checked = !photo.checked;
-                cell.checked = photo.checked;
-            }
-            
-        };
+        _imageContainer.containerViewDelegate = self;
         [self.view addSubview:_imageContainer];
     }
 }
@@ -145,10 +136,14 @@
     
 }
 
-- (void)imageContainerView:(ImageContainerView *)imageContainerView didDeselectPhoto:(NTPhoto *)phtot
+- (void)imageContainerView:(ImageContainerView *)imageContainerView didDeselectPhoto:(NTPhoto *)photo
 {
-    NTPhotoCell *cell = (NTPhotoCell *)[_collectionView cellForItemAtIndexPath:phtot.indexPath];
-    cell.checked = !phtot.checked;
+    NTPhotoCell *cell = (NTPhotoCell *)[_collectionView cellForItemAtIndexPath:photo.indexPath];
+    if ([photo.groupBelonged isEqualToString:[self.group valueForProperty:ALAssetsGroupPropertyName]]) {
+        photo.checked = !photo.checked;
+        cell.checked = photo.checked;
+
+    }
 }
 
 

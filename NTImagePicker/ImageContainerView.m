@@ -95,6 +95,10 @@
     if (_didDeselectPhotoBlock) {
         _didDeselectPhotoBlock(self, photo);
     }
+    
+    if ([_containerViewDelegate respondsToSelector:@selector(imageContainerView:didDeselectPhoto:)]) {
+        [_containerViewDelegate imageContainerView:self didDeselectPhoto:photo];
+    }
 }
 
 /*
