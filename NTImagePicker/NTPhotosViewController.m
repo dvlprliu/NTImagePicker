@@ -18,7 +18,6 @@
 {
     PhotoCollectionViewDataSource   *_dataSource;
     ImageContainerView              *_imageContainer;
-    NSMutableArray                  *_selectedPhotos;
 }
 
 @end
@@ -87,13 +86,24 @@
 - (void)setupContainerView
 {
     if (!_imageContainer) {
-        _imageContainer = [[ImageContainerView alloc] initWithFrame:(CGRect){
+        _imageContainer = [ImageContainerView sharedInstance];
+        _imageContainer.frame = (CGRect){
             .origin.x = 0,
             .origin.y = SCREEN_HEIGHT - CONTAINER_HEIGHT,
             .size.width  = SCREEN_WIDTH,
             .size.height = CONTAINER_HEIGHT
-        }];
+        };
         _imageContainer.backgroundColor = [UIColor blackColor];
+        __unsafe_unretained UICollectionView *cltv = _collectionView;
+        __unsafe_unretained typeof(self) bself = self;
+        _imageContainer.didDeselectPhotoBlock = ^(ImageContainerView *containerView, NTPhoto *photo) {
+            NTPhotoCell *cell = (NTPhotoCell *)[cltv cellForItemAtIndexPath:photo.indexPath];
+            if ([photo.groupBelonged isEqualToString:[bself.group valueForProperty:ALAssetsGroupPropertyName]]) {
+                photo.checked = !photo.checked;
+                cell.checked = photo.checked;
+            }
+            
+        };
         [self.view addSubview:_imageContainer];
     }
 }
@@ -125,20 +135,20 @@
     photo.checked = !photo.checked;
     cell.checked = photo.checked;
     
-    if (!_selectedPhotos) {
-        _selectedPhotos = [[NSMutableArray alloc] init];
-    }
     
     ImageStorage *storage = [ImageStorage sharedStorage];
     [storage initilizeStoredPhotos];
     photo.checked ? [storage.storedPhotos addObject:photo] : [storage.storedPhotos removeObject:photo];
 
-    if (_selectedPhotos.count == 0) {
-        _selectedPhotos = nil;
-    }
-    
+    _imageContainer.imageStorage = storage;
     NSLog(@"storage.storedImage : %@", storage.storedPhotos);
     
+}
+
+- (void)imageContainerView:(ImageContainerView *)imageContainerView didDeselectPhoto:(NTPhoto *)phtot
+{
+    NTPhotoCell *cell = (NTPhotoCell *)[_collectionView cellForItemAtIndexPath:phtot.indexPath];
+    cell.checked = !phtot.checked;
 }
 
 

@@ -56,7 +56,7 @@
 {
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [self.imageView setImage:album.poster];
-    self.textLabel.text = [NSString stringWithFormat:@"%@(%d)",album.albumName,album.count];
+    self.textLabel.text = [NSString stringWithFormat:@"%@(%lu)",album.albumName,(unsigned long)album.count];
 }
 
 @end

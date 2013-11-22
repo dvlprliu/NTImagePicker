@@ -10,11 +10,20 @@
 
 #define CONTAINER_HEIGHT    80
 
-@class NTImageStorage;
+@class ImageStorage;
+@class ImageContainerView;
+@class NTPhoto;
 
-@interface ImageContainerView : UIView
+typedef void(^DidDeselectPhotoBlock)(ImageContainerView *containerView, NTPhoto *photo);
+
+
+@interface ImageContainerView : UIScrollView
+
++ (instancetype)sharedInstance;
 
 @property (nonatomic, strong) UIScrollView  *scrollView;
-@property (nonatomic, strong) NTImageStorage  *imageStorage;
+@property (nonatomic, strong) ImageStorage  *imageStorage;
+
+@property (nonatomic, copy)   DidDeselectPhotoBlock didDeselectPhotoBlock;
 
 @end

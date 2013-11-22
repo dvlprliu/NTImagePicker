@@ -7,6 +7,8 @@
 //
 
 #import "ImageContainerView.h"
+#import "ImageStorage.h"
+#import "NTPhoto.h"
 
 @implementation ImageContainerView
 
@@ -17,6 +19,18 @@
         [self setupScrollView];
     }
     return self;
+}
+
++ (instancetype)sharedInstance
+{
+    static ImageContainerView *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+        
+    });
+    
+    return _sharedInstance;
 }
 
 - (void)setupScrollView
@@ -30,6 +44,56 @@
         }];
         _scrollView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_scrollView];
+    }
+}
+
+- (void)setImageStorage:(ImageStorage *)imageStorage
+{
+    [self setupScrollView];
+    
+    for (UIImageView *image in self.subviews) {
+        if (image) {
+            [image removeFromSuperview];
+        }
+    }
+    
+    static int rect = 60;
+    
+    _imageStorage = imageStorage;
+    NSMutableArray *storedPhoto = _imageStorage.storedPhotos;
+    
+    for (int i = 0; i < storedPhoto.count; i++) {
+        static int offset = 3;
+        
+        int x = 5 + i * (rect + offset);
+        int y = 3;
+        
+        NTPhoto *photo = storedPhoto[i];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, rect, rect)];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = 100 + i;
+        imageView.image = photo.thumnail;
+        [self addSubview:imageView];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deselectPhoto:)];
+        [imageView addGestureRecognizer:tapGesture];
+    }
+    
+    self.contentSize = CGSizeMake(storedPhoto.count * 63, self.frame.size.height);
+    
+}
+
+- (void)deselectPhoto:(UIGestureRecognizer *)gesture
+{
+    UIImageView *imageView = (UIImageView *)[gesture view];
+    NSInteger index = imageView.tag - 100;
+    NTPhoto *photo = _imageStorage.storedPhotos[index];
+    [_imageStorage.storedPhotos removeObjectAtIndex:index];
+    [self setImageStorage:_imageStorage];
+    NSLog(@"kkk : %@", _imageStorage.storedPhotos);
+    
+    if (_didDeselectPhotoBlock) {
+        _didDeselectPhotoBlock(self, photo);
     }
 }
 

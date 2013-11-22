@@ -7,7 +7,7 @@
 //
 
 #import "NTSuperViewController.h"
-
+#import "ImageContainerView.h"
 @class ALAssetsGroup;
 
 @interface NTPhotosViewController : NTSuperViewController<UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
