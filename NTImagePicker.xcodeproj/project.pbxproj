@@ -33,6 +33,7 @@
 		E063BF41183C511600293D33 /* NTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF40183C511600293D33 /* NTNavigationController.m */; };
 		E063BF44183C51BB00293D33 /* NTSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF43183C51BB00293D33 /* NTSuperViewController.m */; };
 		E063BF47183C51FD00293D33 /* NTAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E063BF46183C51FD00293D33 /* NTAlbumViewController.m */; };
+		E0A061091840ABE3001AE69A /* NTImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A061081840ABE3001AE69A /* NTImagePicker.m */; };
 		E0A1684A183C5A3900608985 /* AlbumTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A16849183C5A3900608985 /* AlbumTableDataSource.m */; };
 		E0A1684D183C704F00608985 /* AssetParseEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A1684C183C704F00608985 /* AssetParseEngine.m */; };
 		E0A16850183C727900608985 /* NTAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A1684F183C727900608985 /* NTAlbum.m */; };
@@ -90,6 +91,8 @@
 		E063BF43183C51BB00293D33 /* NTSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSuperViewController.m; sourceTree = "<group>"; };
 		E063BF45183C51FD00293D33 /* NTAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAlbumViewController.h; sourceTree = "<group>"; };
 		E063BF46183C51FD00293D33 /* NTAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAlbumViewController.m; sourceTree = "<group>"; };
+		E0A061071840ABE3001AE69A /* NTImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTImagePicker.h; sourceTree = "<group>"; };
+		E0A061081840ABE3001AE69A /* NTImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTImagePicker.m; sourceTree = "<group>"; };
 		E0A16848183C5A3900608985 /* AlbumTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableDataSource.h; sourceTree = "<group>"; };
 		E0A16849183C5A3900608985 /* AlbumTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableDataSource.m; sourceTree = "<group>"; };
 		E0A1684B183C704F00608985 /* AssetParseEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetParseEngine.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 		E0608D89183C9172009469DE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E0A061071840ABE3001AE69A /* NTImagePicker.h */,
+				E0A061081840ABE3001AE69A /* NTImagePicker.m */,
 				E063BF3F183C511600293D33 /* NTNavigationController.h */,
 				E063BF40183C511600293D33 /* NTNavigationController.m */,
 				E063BF42183C51BB00293D33 /* NTSuperViewController.h */,
@@ -303,6 +308,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Liu Zhuang";
 				TargetAttributes = {
+					E063BF04183C4F1500293D33 = {
+						DevelopmentTeam = ZZ964ZAERM;
+					};
 					E063BF25183C4F1500293D33 = {
 						TestTargetID = E063BF04183C4F1500293D33;
 					};
@@ -363,6 +371,7 @@
 				E0A1684A183C5A3900608985 /* AlbumTableDataSource.m in Sources */,
 				E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */,
 				E0608D8F183C92EB009469DE /* NTPhotoCell.m in Sources */,
+				E0A061091840ABE3001AE69A /* NTImagePicker.m in Sources */,
 				E063BF41183C511600293D33 /* NTNavigationController.m in Sources */,
 				E0A16850183C727900608985 /* NTAlbum.m in Sources */,
 				E063BF19183C4F1500293D33 /* AppDelegate.m in Sources */,
@@ -436,7 +445,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Weidong Chen (ZZ964ZAERM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Weidong Chen (ZZ964ZAERM)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -475,7 +485,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Weidong Chen (ZZ964ZAERM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Weidong Chen (ZZ964ZAERM)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -496,10 +507,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NTImagePicker/NTImagePicker-Prefix.pch";
 				INFOPLIST_FILE = "NTImagePicker/NTImagePicker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -509,10 +524,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NTImagePicker/NTImagePicker-Prefix.pch";
 				INFOPLIST_FILE = "NTImagePicker/NTImagePicker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

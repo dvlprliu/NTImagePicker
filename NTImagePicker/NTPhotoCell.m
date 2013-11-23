@@ -20,7 +20,6 @@
     self = [super init];
     if (self) {
         _checked = NO;
-        
     }
     return self;
 }
@@ -47,7 +46,6 @@
         _coverView.userInteractionEnabled = NO;
         _coverView.alpha = 0;
         [self addSubview:_coverView];
-        
     }
 }
 

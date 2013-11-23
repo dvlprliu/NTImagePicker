@@ -37,6 +37,9 @@
 {
     [super viewDidLoad];
     
+    [self setTitle:@"相册"];
+    
+    [self setBarButtonItemTitle:@"取消" style:UIBarButtonItemStylePlain AtPosition:NTNavigationBarPositionRight target:self action:@selector(cancelPickingImage:)];
     [self setupTableView];
     
     [self getPhotoAlbums];
@@ -83,10 +86,6 @@
     
 }
 
-- (void)registerObserver
-{
-    [self addObserver:self forKeyPath:@"_dataSource.dataSource.count" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
-}
 
 - (void)setupTableView
 {   
@@ -108,7 +107,6 @@
 
 - (void)dealloc
 {
-    [self removeObserver:self forKeyPath:@"_dataSource.dataSource"];
     
     
 }

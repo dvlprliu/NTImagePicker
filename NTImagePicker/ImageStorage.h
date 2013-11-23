@@ -12,6 +12,7 @@
 @interface ImageStorage : NSObject
 
 @property (nonatomic, strong) NSMutableArray *storedPhotos;
+@property (nonatomic, assign) NSInteger      maxCount;
 
 + (instancetype)sharedStorage;
 

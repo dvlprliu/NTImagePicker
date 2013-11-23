@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NTImagePicker.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	// Do any additional setup after loading the view, typically from a nib.
+    
+}
+- (IBAction)btnClicked:(id)sender {
+    NTImagePicker *imagePicker = [[NTImagePicker alloc] init];
+    imagePicker.maxSelectionCount = 9;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning

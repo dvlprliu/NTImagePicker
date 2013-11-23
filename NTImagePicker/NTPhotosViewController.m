@@ -37,6 +37,8 @@
 {
     [super viewDidLoad];
     
+    [self setTitle:[self.group valueForProperty:ALAssetsGroupPropertyName]];
+    [self setBarButtonItemTitle:@"取消" style:UIBarButtonItemStylePlain AtPosition:NTNavigationBarPositionRight target:self action:@selector(cancelPickingImage:)];
     [self setupCollectionView];
     [self getAllPhotosFromAssetGroup];
     [self setupContainerView];
@@ -121,16 +123,27 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    ImageStorage *storage = [ImageStorage sharedStorage];
+    NSInteger capacity = storage.maxCount;
+    NSInteger count = storage.storedPhotos.count;
+    [storage initilizeStoredPhotos];
+    
     NTPhotoCell *cell = (NTPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NTPhoto *photo = self.photos[indexPath.item];
     photo.checked = !photo.checked;
-    cell.checked = photo.checked;
     
-    
-    ImageStorage *storage = [ImageStorage sharedStorage];
-    [storage initilizeStoredPhotos];
-    photo.checked ? [storage.storedPhotos addObject:photo] : [storage.storedPhotos removeObject:photo];
-
+    if (photo.checked) {
+        if (count >= capacity) {
+            NSLog(@"不能再添加了");
+            return;
+        }
+        cell.checked = photo.checked;
+        [storage.storedPhotos addObject:photo];
+    } else {
+        cell.checked = photo.checked;
+        [storage.storedPhotos removeObject:photo];
+    }
     _imageContainer.imageStorage = storage;
     NSLog(@"storage.storedImage : %@", storage.storedPhotos);
     

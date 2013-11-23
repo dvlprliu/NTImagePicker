@@ -9,17 +9,13 @@
 #import "AppDelegate.h"
 #import "NTNavigationController.h"
 #import "NTAlbumViewController.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NTAlbumViewController *albumViewController = [[NTAlbumViewController alloc] init];
-    
-    _navigationController = [[NTNavigationController alloc] initWithRootViewController:albumViewController];
-    
-    [self.window setRootViewController:_navigationController];
-    [self.window makeKeyAndVisible];
+
     
     return YES;
 }
