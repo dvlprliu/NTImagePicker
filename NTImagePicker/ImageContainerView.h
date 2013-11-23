@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#define CONTAINER_HEIGHT    80
-
+#define CONTAINER_HEIGHT    70
+#define CONTAINER_WIDTH     [UIScreen mainScreen].bounds.size.width
 @class ImageStorage;
 @class ImageContainerView;
 @class NTPhoto;
@@ -22,11 +22,11 @@ typedef void(^DidDeselectPhotoBlock)(ImageContainerView *containerView, NTPhoto 
 
 @end
 
-@interface ImageContainerView : UIScrollView
+@interface ImageContainerView : UIView
 
 + (instancetype)sharedInstance;
 
-@property (nonatomic, strong) UIScrollView  *scrollView;
+@property (nonatomic, strong, readonly) UIScrollView  *scrollView;
 @property (nonatomic, strong) ImageStorage  *imageStorage;
 
 @property (nonatomic, copy)   DidDeselectPhotoBlock didDeselectPhotoBlock;

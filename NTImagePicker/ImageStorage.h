@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "NTPhoto.h"
+@class NTImagePicker;
 
 @interface ImageStorage : NSObject
 
-@property (nonatomic, strong) NSMutableArray *storedPhotos;
-@property (nonatomic, assign) NSInteger      maxCount;
+@property (nonatomic, strong) NSMutableArray    *storedPhotos;
+@property (nonatomic, assign) NSInteger         maxCount;
+@property (nonatomic, strong) NTImagePicker     *imagePicker;
 
 + (instancetype)sharedStorage;
 

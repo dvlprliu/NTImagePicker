@@ -31,8 +31,8 @@
     if (self) {
         NTAlbumViewController *album = [[NTAlbumViewController alloc] init];
         [self setViewControllers:@[album]];
+        [ImageStorage sharedStorage].imagePicker = self;
     }
-    
     return self;
 }
 
@@ -40,7 +40,30 @@
 {
     [super viewDidLoad];
 
+
     // Do any additional setup after loading the view.
+}
+
+- (void)confirmPhotoSelection:(id)sender
+{
+    NSMutableArray *selection = [ImageStorage sharedStorage].storedPhotos;
+    NSLog(@"selection : %@", selection);
+    if (_finashPickingPhotoBlock) {
+        _finashPickingPhotoBlock(self, selection);
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+//    if ([_imagePickerDelegate performSelector:@selector(imagePicker:selectedPhotos:)]) {
+//        [_imagePickerDelegate imagePicker:self selectedPhotos:selection];
+//    }
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
+
+}
+
+- (void)setDidFinashPickingPhotoBlock:(DidFinashPickingPhotoBlock)block
+{
+    _finashPickingPhotoBlock = [block copy];
 }
 
 - (void)setSelection:(NSMutableArray *)selection
@@ -53,6 +76,10 @@
     [ImageStorage sharedStorage].maxCount = maxSelectionCount;
 }
 
+- (void)dismiss
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning
 {

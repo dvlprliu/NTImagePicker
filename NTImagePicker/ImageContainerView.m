@@ -10,13 +10,20 @@
 #import "ImageStorage.h"
 #import "NTPhoto.h"
 
+@interface ImageContainerView ()
+{
+    UIButton *_confirmButton;
+}
+
+@end
+
 @implementation ImageContainerView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupScrollView];
+
     }
     return self;
 }
@@ -36,23 +43,49 @@
 - (void)setupScrollView
 {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){
-            .origin.x = 0,
-            .origin.y = 0,
-            .size.width  = self.frame.size.width - 80,
-            .size.height = self.frame.size.height
-        }];
-        _scrollView.backgroundColor = [UIColor whiteColor];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CONTAINER_WIDTH-70, CONTAINER_HEIGHT)];
+        _scrollView.backgroundColor = [UIColor clearColor];
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:_scrollView];
     }
 }
 
+- (void)setupConfirButton
+{
+    if (!_confirmButton) {
+        
+        _confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _confirmButton.frame = CGRectMake(CONTAINER_WIDTH - 60, 10, 50, 50);
+        [_confirmButton setTitle:@"确定" forState:UIControlStateNormal];
+        _confirmButton.backgroundColor = [UIColor redColor];
+        [_confirmButton addTarget:[ImageStorage sharedStorage].imagePicker action:@selector(confirmPhotoSelection:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_confirmButton];
+    }
+}
+
+//- (void)confirmPhotoSelection:(id)sender
+//{
+//    NSMutableArray *selection = [ImageStorage sharedStorage].storedPhotos;
+//    NSLog(@"selection : %@", selection);
+//}
+
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    [self setupScrollView];
+    [self setupConfirButton];
+    
+    NSLog(@"subViews : %@", [self subviews]);
+}
+
 - (void)setImageStorage:(ImageStorage *)imageStorage
 {
-    [self setupScrollView];
     
-    for (UIImageView *image in self.subviews) {
-        if (image) {
+    for (UIImageView *image in _scrollView.subviews) {
+        if ([image isKindOfClass:[UIImageView class]]) {
             [image removeFromSuperview];
         }
     }
@@ -73,13 +106,19 @@
         imageView.userInteractionEnabled = YES;
         imageView.tag = 100 + i;
         imageView.image = photo.thumnail;
-        [self addSubview:imageView];
+        [_scrollView addSubview:imageView];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deselectPhoto:)];
         [imageView addGestureRecognizer:tapGesture];
     }
     
-    self.contentSize = CGSizeMake(storedPhoto.count * 63, self.frame.size.height);
+    _scrollView.contentSize = CGSizeMake(storedPhoto.count * 63, self.frame.size.height);
+    CGFloat offsetX = _scrollView.contentSize.width - _scrollView.frame.size.width;
+    offsetX < 0 ? offsetX = 0 : offsetX;
+    __weak UIScrollView *wScrollView = _scrollView;
+    [UIView animateWithDuration:0.1 animations:^{
+        wScrollView.contentOffset = CGPointMake(offsetX, 0);
+    }];
     
 }
 

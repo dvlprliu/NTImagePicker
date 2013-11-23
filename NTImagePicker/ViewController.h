@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import "NTImagePicker.h"
+@interface ViewController : UIViewController<NTImagePickerDelegate>
 
 @end

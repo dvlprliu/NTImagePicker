@@ -25,8 +25,16 @@
 - (IBAction)btnClicked:(id)sender {
     NTImagePicker *imagePicker = [[NTImagePicker alloc] init];
     imagePicker.maxSelectionCount = 9;
+    [imagePicker setDidFinashPickingPhotoBlock:^(NTImagePicker *picker, NSArray *selection) {
+        NSLog(@"seee : %@",selection);
+    }];
     [self presentViewController:imagePicker animated:YES completion:nil];
     
+}
+
+- (void)imagePicker:(NTImagePicker *)imagePicker selectedPhotos:(NSArray *)photos
+{
+    NSLog(@"photos : %@",  photos);
 }
 
 - (void)didReceiveMemoryWarning

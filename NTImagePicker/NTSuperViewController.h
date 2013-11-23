@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, NTNavigationBarPosition) {
 };
 
 
+
 @interface NTSuperViewController : UIViewController
 
 - (void)setBarButtonItemTitle:(NSString *)title style:(UIBarButtonItemStyle)style AtPosition:(NTNavigationBarPosition)position target:(id)target action:(SEL)action;

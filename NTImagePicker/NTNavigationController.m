@@ -12,6 +12,4 @@
 
 @implementation NTNavigationController
 
-
-
 @end
