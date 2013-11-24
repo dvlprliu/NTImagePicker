@@ -59,17 +59,18 @@
         _confirmButton.frame = CGRectMake(CONTAINER_WIDTH - 60, 10, 50, 50);
         [_confirmButton setTitle:@"确定" forState:UIControlStateNormal];
         _confirmButton.backgroundColor = [UIColor redColor];
-        [_confirmButton addTarget:[ImageStorage sharedStorage].imagePicker action:@selector(confirmPhotoSelection:) forControlEvents:UIControlEventTouchUpInside];
+        [_confirmButton addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_confirmButton];
     }
 }
 
-//- (void)confirmPhotoSelection:(id)sender
-//{
-//    NSMutableArray *selection = [ImageStorage sharedStorage].storedPhotos;
-//    NSLog(@"selection : %@", selection);
-//}
-
+- (void)confirm:(id)sender
+{
+    NSArray *arr = [ImageStorage sharedStorage].storedPhotos;
+    if ([_delegate respondsToSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)]) {
+        [_delegate imageContainerView:self didSelectionPhoto:arr];
+    }
+}
 
 - (void)setFrame:(CGRect)frame
 {

@@ -8,6 +8,7 @@
 
 #import "NTNavigationController.h"
 #import "NTPhoto.h"
+#import "ImageContainerView.h"
 
 @class NTImagePicker;
 
@@ -20,7 +21,7 @@ typedef void(^DidFinashPickingPhotoBlock)(NTImagePicker *, NSArray *);
 
 @end
 
-@interface NTImagePicker : NTNavigationController
+@interface NTImagePicker : NTNavigationController<ImageContainerViewDelegate>
 {
 
 }
@@ -37,7 +38,6 @@ typedef void(^DidFinashPickingPhotoBlock)(NTImagePicker *, NSArray *);
 @property (nonatomic, strong) NSMutableArray    *selection;
 
 - (void)setDidFinashPickingPhotoBlock:(DidFinashPickingPhotoBlock)block;
-- (void)confirmPhotoSelection:(id)sender;
 - (void)dismiss;
 
 @end
