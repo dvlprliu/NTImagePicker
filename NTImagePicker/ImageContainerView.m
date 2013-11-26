@@ -67,7 +67,7 @@
 - (void)confirm:(id)sender
 {
     NSArray *arr = [ImageStorage sharedStorage].storedPhotos;
-    if ([_delegate respondsToSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)]) {
+    if ([_delegate respondsToSelector:@selector(imageContainerView:didDeselectPhoto:)]) {
         [_delegate imageContainerView:self didSelectionPhoto:arr];
     }
 }

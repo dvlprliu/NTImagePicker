@@ -10,6 +10,8 @@
 #import "ImageContainerView.h"
 @class ALAssetsGroup;
 
+static NSString *const kImageContainerDidFinashSelectPhotoNotification = @"kImageContainerDidFinashSelectPhotoNotification";
+
 @interface NTPhotosViewController : NTSuperViewController<UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,ImageContainerViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;

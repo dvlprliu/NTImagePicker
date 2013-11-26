@@ -15,8 +15,8 @@
 typedef void(^DidFinashPickingPhotoBlock)(NTImagePicker *, NSArray *);
 
 @protocol NTImagePickerDelegate <NSObject>
-
-- (void)imagePicker:(NTImagePicker *)imagePicker selectedPhotos:(NSArray *)photos;
+@optional
+- (void)imagePicker:(NTImagePicker *)imagePicker didFinashSelectingPhoto:(NSArray *)photos;
 - (void)canceledPickingImageWithPicker:(NTImagePicker *)imagePicker;
 
 @end

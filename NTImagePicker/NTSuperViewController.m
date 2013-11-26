@@ -31,11 +31,8 @@
 
 - (void)cancelPickingImage:(id)sender
 {
-    ImageStorage *storage = [ImageStorage sharedStorage];
-    [storage.storedPhotos removeAllObjects];
-    [ImageContainerView sharedInstance].imageStorage = storage;
-    [self dismissViewControllerAnimated:YES completion:nil];
-
+    
+    [self.navigationController performSelector:@selector(cancelSelectingPhoto)];
 }
 
 @end

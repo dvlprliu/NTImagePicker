@@ -10,6 +10,7 @@
 #import "ImageStorage.h"
 #import "NTAlbumViewController.h"
 #import "ImageContainerView.h"
+#import "NTPhotosViewController.h"
 
 @interface NTImagePicker ()
 
@@ -32,26 +33,39 @@
     if (self) {
         NTAlbumViewController *album = [[NTAlbumViewController alloc] init];
         [self setViewControllers:@[album]];
-        [ImageStorage sharedStorage].imagePicker = self;
-        
     }
     return self;
+}
+
+- (void)dealloc
+{
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [ImageContainerView sharedInstance].delegate = self;
 
+    
     // Do any additional setup after loading the view.
 }
 
-- (void)imageContainerView:(ImageContainerView *)imageCOntainerVIew didSelectionPhoto:(NSArray *)photos
+- (void)photosHasBeenSelected:(NSArray *)selectedPhotos
 {
-    NSLog(@"photo ,,,,,,,, : %@",photos);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([_imagePickerDelegate respondsToSelector:@selector(imagePicker:didFinashSelectingPhoto:)]) {
+        [_imagePickerDelegate imagePicker:self didFinashSelectingPhoto:selectedPhotos];
+    }
 }
 
+- (void)cancelSelectingPhoto
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([_imagePickerDelegate respondsToSelector:@selector(canceledPickingImageWithPicker:)]) {
+        [_imagePickerDelegate canceledPickingImageWithPicker:self];
+    }
+}
 
 - (void)setDidFinashPickingPhotoBlock:(DidFinashPickingPhotoBlock)block
 {

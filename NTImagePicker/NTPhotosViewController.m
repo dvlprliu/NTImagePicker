@@ -28,7 +28,7 @@
 {
     self = [super init];
     if (self) {
-        
+
     }
     return self;
 }
@@ -95,6 +95,7 @@
             .size.width  = SCREEN_WIDTH,
             .size.height = CONTAINER_HEIGHT
         };
+        _imageContainer.delegate = self;
         _imageContainer.backgroundColor = [UIColor blackColor];
         _imageContainer.containerViewDelegate = self;
         [self.view addSubview:_imageContainer];
@@ -135,6 +136,7 @@
     
     if (photo.checked) {
         if (count >= capacity) {
+
             NSLog(@"不能再添加了");
             return;
         }
@@ -145,7 +147,6 @@
         [storage.storedPhotos removeObject:photo];
     }
     _imageContainer.imageStorage = storage;
-    NSLog(@"storage.storedImage : %@", storage.storedPhotos);
     
 }
 
@@ -159,6 +160,9 @@
     }
 }
 
-
+- (void)imageContainerView:(ImageContainerView *)imageCOntainerVIew didSelectionPhoto:(NSArray *)photos
+{
+    [self.navigationController performSelector:@selector(photosHasBeenSelected:) withObject:photos ];
+}
 
 @end

@@ -25,16 +25,19 @@
 - (IBAction)btnClicked:(id)sender {
     NTImagePicker *imagePicker = [[NTImagePicker alloc] init];
     imagePicker.maxSelectionCount = 9;
-    [imagePicker setDidFinashPickingPhotoBlock:^(NTImagePicker *picker, NSArray *selection) {
-        NSLog(@"seee : %@",selection);
-    }];
+    imagePicker.imagePickerDelegate = self;
     [self presentViewController:imagePicker animated:YES completion:nil];
     
 }
 
-- (void)imagePicker:(NTImagePicker *)imagePicker selectedPhotos:(NSArray *)photos
+- (void)imagePicker:(NTImagePicker *)imagePicker didFinashSelectingPhoto:(NSArray *)photos
 {
-    NSLog(@"photos : %@",  photos);
+    NSLog(@"photos  delegate     00000000000    : %@",  photos);
+}
+
+- (void)canceledPickingImageWithPicker:(NTImagePicker *)imagePicker
+{
+    NSLog(@"取消选择：：：；3；3；3；3； ");
 }
 
 - (void)didReceiveMemoryWarning

@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) NSMutableArray    *storedPhotos;
 @property (nonatomic, assign) NSInteger         maxCount;
-@property (nonatomic, strong) NTImagePicker     *imagePicker;
 
 + (instancetype)sharedStorage;
 
