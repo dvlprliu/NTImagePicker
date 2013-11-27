@@ -30,9 +30,37 @@
     
 }
 
+- (void)setPhotos:(NSArray *)photos
+{
+    int i = 0;
+    for (NTPhoto *photo in photos) {
+        
+        static int rect = 60;
+        static int offset = 10;
+        int row = i / 3;
+        int col = i % 3;
+        int x = 5 + col * (rect + offset);
+        int y = 260 + row * (rect + offset);
+        
+        UIImage *image = photo.thumnail;
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:(CGRect){
+            .origin.x = x,
+            .origin.y = y,
+            .size.width  = rect,
+            .size.height = rect
+        }];
+        
+        [imageView setImage:image];
+        [self.view addSubview:imageView];
+        
+        i ++;
+    }
+}
+
 - (void)imagePicker:(NTImagePicker *)imagePicker didFinashSelectingPhoto:(NSArray *)photos
 {
     NSLog(@"photos  delegate     00000000000    : %@",  photos);
+    [self setPhotos:photos];
 }
 
 - (void)canceledPickingImageWithPicker:(NTImagePicker *)imagePicker

@@ -9,7 +9,6 @@
 #import "NTNavigationController.h"
 #import "NTPhoto.h"
 #import "ImageContainerView.h"
-
 @class NTImagePicker;
 
 typedef void(^DidFinashPickingPhotoBlock)(NTImagePicker *, NSArray *);

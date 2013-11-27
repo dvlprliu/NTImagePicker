@@ -31,6 +31,13 @@
     }
 }
 
+- (void)initlizeTempSelectedPhotos
+{
+    if (!_tempSelectedPhoto) {
+        _tempSelectedPhoto = [[NSMutableArray alloc] init];
+    }
+}
+
 
 
 

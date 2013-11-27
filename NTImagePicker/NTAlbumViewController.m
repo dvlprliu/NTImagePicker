@@ -50,6 +50,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NTPhotosViewController *photoVC = [[NTPhotosViewController alloc] init];
     photoVC.group = self.albums[indexPath.row];
     [self.navigationController pushViewController:photoVC animated:YES];
