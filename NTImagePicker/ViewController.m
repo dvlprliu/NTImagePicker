@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) NSMutableArray *selectedPhotos;
+
 @end
 
 @implementation ViewController
@@ -25,6 +27,7 @@
 - (IBAction)btnClicked:(id)sender {
     NTImagePicker *imagePicker = [[NTImagePicker alloc] init];
     imagePicker.maxSelectionCount = 9;
+    imagePicker.selection = self.selectedPhotos;
     imagePicker.imagePickerDelegate = self;
     [self presentViewController:imagePicker animated:YES completion:nil];
     
@@ -33,19 +36,26 @@
 - (void)setPhotos:(NSArray *)photos
 {
     int i = 0;
+    for (id objc in self.view.subviews) {
+        if ([objc isKindOfClass:[UIImageView class]]) {
+            [objc removeFromSuperview];
+        }
+    }
+    
     for (NTPhoto *photo in photos) {
         
-        static int rect = 60;
+        static int rect   = 60;
         static int offset = 10;
+        
         int row = i / 3;
         int col = i % 3;
-        int x = 5 + col * (rect + offset);
-        int y = 260 + row * (rect + offset);
+        int x   = 5 + col * (rect + offset);
+        int y   = 260 + row * (rect + offset);
         
         UIImage *image = photo.thumnail;
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:(CGRect){
-            .origin.x = x,
-            .origin.y = y,
+            .origin.x    = x,
+            .origin.y    = y,
             .size.width  = rect,
             .size.height = rect
         }];
@@ -60,7 +70,9 @@
 - (void)imagePicker:(NTImagePicker *)imagePicker didFinashSelectingPhoto:(NSArray *)photos
 {
     NSLog(@"photos  delegate     00000000000    : %@",  photos);
-    [self setPhotos:photos];
+    
+    self.selectedPhotos = [photos mutableCopy];
+    [self setPhotos:self.selectedPhotos];
 }
 
 - (void)canceledPickingImageWithPicker:(NTImagePicker *)imagePicker

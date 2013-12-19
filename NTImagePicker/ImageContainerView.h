@@ -30,8 +30,6 @@ typedef void(^DidDeselectPhotoBlock)(ImageContainerView *containerView, NTPhoto 
 @property (nonatomic, strong, readonly) UIScrollView  *scrollView;
 @property (nonatomic, strong) ImageStorage  *imageStorage;
 
-@property (nonatomic, weak) id<ImageContainerViewDelegate> delegate;
-
 @property (nonatomic, copy)   DidDeselectPhotoBlock didDeselectPhotoBlock;
 @property (nonatomic, weak)   id<ImageContainerViewDelegate> containerViewDelegate;
 

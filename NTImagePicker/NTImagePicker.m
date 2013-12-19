@@ -60,7 +60,6 @@
 
 - (void)cancelSelectingPhoto
 {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
     if ([_imagePickerDelegate respondsToSelector:@selector(canceledPickingImageWithPicker:)]) {
         [_imagePickerDelegate canceledPickingImageWithPicker:self];

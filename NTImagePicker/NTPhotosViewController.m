@@ -95,7 +95,7 @@
             .size.width  = SCREEN_WIDTH,
             .size.height = CONTAINER_HEIGHT
         };
-        _imageContainer.delegate = self;
+        _imageContainer.containerViewDelegate = self;
         _imageContainer.backgroundColor = [UIColor blackColor];
         _imageContainer.containerViewDelegate = self;
         [self.view addSubview:_imageContainer];
@@ -105,15 +105,15 @@
 - (void)setupCollectionView
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.itemSize = CGSizeMake(73, 73);
-    flowLayout.minimumInteritemSpacing = 5;
-    flowLayout.minimumLineSpacing = 5;
-    flowLayout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, 90);
+    flowLayout.scrollDirection             = UICollectionViewScrollDirectionVertical;
+    flowLayout.itemSize                    = CGSizeMake(73, 73);
+    flowLayout.minimumInteritemSpacing     = 5;
+    flowLayout.minimumLineSpacing          = 5;
+    flowLayout.footerReferenceSize         = CGSizeMake(SCREEN_WIDTH, 90);
     
-    _dataSource = [[PhotoCollectionViewDataSource alloc] init];
+    _dataSource           = [[PhotoCollectionViewDataSource alloc] init];
     _dataSource.groupName = [self.group valueForProperty:ALAssetsGroupPropertyName];
-    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    _collectionView       = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
     _collectionView.dataSource = _dataSource;
     _collectionView.delegate   = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
@@ -126,9 +126,10 @@
 {
     
     ImageStorage *storage = [ImageStorage sharedStorage];
-    NSInteger capacity = storage.maxCount;
-    NSInteger count = storage.storedPhotos.count;
+    NSInteger capacity    = storage.maxCount;
+    NSInteger count       = storage.storedPhotos.count + storage.tempSelectedPhoto.count;
     [storage initilizeStoredPhotos];
+    [storage initlizeTempSelectedPhotos];
     
     NTPhotoCell *cell = (NTPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NTPhoto *photo = self.photos[indexPath.item];
@@ -141,10 +142,17 @@
             return;
         }
         cell.checked = photo.checked;
-        [storage.storedPhotos addObject:photo];
+        [storage.tempSelectedPhoto addObject:photo];
     } else {
         cell.checked = photo.checked;
-        [storage.storedPhotos removeObject:photo];
+        if ([storage.storedPhotos containsObject:photo] ) {
+            [storage.storedPhotos removeObject:photo];
+        }
+        if ([storage.tempSelectedPhoto containsObject:photo]) {
+            [storage.tempSelectedPhoto removeObject:photo];
+        }
+            
+        
     }
     _imageContainer.imageStorage = storage;
     
@@ -156,7 +164,6 @@
     if ([photo.groupBelonged isEqualToString:[self.group valueForProperty:ALAssetsGroupPropertyName]]) {
         photo.checked = !photo.checked;
         cell.checked = photo.checked;
-
     }
 }
 

@@ -15,6 +15,7 @@
     UIButton *_confirmButton;
 }
 
+@property (nonatomic, strong) NSMutableArray *allPhotos;
 @end
 
 @implementation ImageContainerView
@@ -66,9 +67,12 @@
 
 - (void)confirm:(id)sender
 {
-    NSArray *arr = [ImageStorage sharedStorage].storedPhotos;
-    if ([_delegate respondsToSelector:@selector(imageContainerView:didDeselectPhoto:)]) {
-        [_delegate imageContainerView:self didSelectionPhoto:arr];
+    ImageStorage *storage = [ImageStorage sharedStorage];
+    [storage.storedPhotos addObjectsFromArray:storage.tempSelectedPhoto];
+    [storage.tempSelectedPhoto removeAllObjects];
+    NSArray *selectedPhoto = storage.storedPhotos;
+    if ([_containerViewDelegate respondsToSelector:@selector(imageContainerView:didDeselectPhoto:)]) {
+        [_containerViewDelegate imageContainerView:self didSelectionPhoto:selectedPhoto];
     }
 }
 
@@ -93,27 +97,30 @@
     
     static int rect = 60;
     
-    _imageStorage = imageStorage;
-    NSMutableArray *storedPhoto = _imageStorage.storedPhotos;
+    _imageStorage            = imageStorage;
+    NSArray *tempStoredPhoto = _imageStorage.tempSelectedPhoto;
+    NSArray *storedPhoto     = _imageStorage.storedPhotos;
+    _allPhotos = [NSMutableArray arrayWithArray:tempStoredPhoto];
+    [_allPhotos addObjectsFromArray:storedPhoto];
     
-    for (int i = 0; i < storedPhoto.count; i++) {
+    for (int i = 0; i < _allPhotos.count; i++) {
         static int offset = 3;
         
         int x = 5 + i * (rect + offset);
         int y = 3;
         
-        NTPhoto *photo = storedPhoto[i];
+        NTPhoto *photo = _allPhotos[i];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, rect, rect)];
         imageView.userInteractionEnabled = YES;
-        imageView.tag = 100 + i;
-        imageView.image = photo.thumnail;
+        imageView.tag                    = 100 + i;
+        imageView.image                  = photo.thumnail;
         [_scrollView addSubview:imageView];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deselectPhoto:)];
         [imageView addGestureRecognizer:tapGesture];
     }
     
-    _scrollView.contentSize = CGSizeMake(storedPhoto.count * 63, self.frame.size.height);
+    _scrollView.contentSize = CGSizeMake(_allPhotos.count * 63, self.frame.size.height);
     CGFloat offsetX = _scrollView.contentSize.width - _scrollView.frame.size.width;
     offsetX < 0 ? offsetX = 0 : offsetX;
     __weak UIScrollView *wScrollView = _scrollView;
@@ -127,8 +134,14 @@
 {
     UIImageView *imageView = (UIImageView *)[gesture view];
     NSInteger index = imageView.tag - 100;
-    NTPhoto *photo = _imageStorage.storedPhotos[index];
-    [_imageStorage.storedPhotos removeObjectAtIndex:index];
+    NTPhoto *photo = _allPhotos[index];
+    ImageStorage *storage = [ImageStorage sharedStorage];
+    if ([storage.tempSelectedPhoto containsObject:photo]) {
+        [storage.tempSelectedPhoto removeObject:photo];
+    }
+    if ([storage.storedPhotos containsObject:photo]) {
+        [storage.storedPhotos removeObject:photo];
+    }
     [self setImageStorage:_imageStorage];
     NSLog(@"kkk : %@", _imageStorage.storedPhotos);
     

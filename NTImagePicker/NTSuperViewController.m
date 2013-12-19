@@ -31,7 +31,7 @@
 
 - (void)cancelPickingImage:(id)sender
 {
-    
+    [[ImageStorage sharedStorage].tempSelectedPhoto removeAllObjects];
     [self.navigationController performSelector:@selector(cancelSelectingPhoto)];
 }
 
