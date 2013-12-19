@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E0297CE2183DB16C00CF05D2 /* NTImageStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E0297CE1183DB16C00CF05D2 /* NTImageStorage.m */; };
 		E0608D82183C8071009469DE /* NTPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D81183C8071009469DE /* NTPhotosViewController.m */; };
 		E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D84183C86BA009469DE /* PhotoCollectionViewDataSource.m */; };
 		E0608D88183C89C2009469DE /* NTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E0608D87183C89C2009469DE /* NTPhoto.m */; };
@@ -50,8 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E0297CE0183DB16C00CF05D2 /* NTImageStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTImageStorage.h; sourceTree = "<group>"; };
-		E0297CE1183DB16C00CF05D2 /* NTImageStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTImageStorage.m; sourceTree = "<group>"; };
 		E0608D80183C8071009469DE /* NTPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPhotosViewController.h; sourceTree = "<group>"; };
 		E0608D81183C8071009469DE /* NTPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTPhotosViewController.m; sourceTree = "<group>"; };
 		E0608D83183C86BA009469DE /* PhotoCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewDataSource.h; sourceTree = "<group>"; };
@@ -165,8 +162,6 @@
 				E0A1684C183C704F00608985 /* AssetParseEngine.m */,
 				E0608D95183CB6BF009469DE /* ImageStorage.h */,
 				E0608D96183CB6BF009469DE /* ImageStorage.m */,
-				E0297CE0183DB16C00CF05D2 /* NTImageStorage.h */,
-				E0297CE1183DB16C00CF05D2 /* NTImageStorage.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -367,7 +362,6 @@
 				E0608D94183CB61D009469DE /* ImageContainerView.m in Sources */,
 				E0608D97183CB6BF009469DE /* ImageStorage.m in Sources */,
 				E063BF44183C51BB00293D33 /* NTSuperViewController.m in Sources */,
-				E0297CE2183DB16C00CF05D2 /* NTImageStorage.m in Sources */,
 				E0A1684A183C5A3900608985 /* AlbumTableDataSource.m in Sources */,
 				E0608D85183C86BA009469DE /* PhotoCollectionViewDataSource.m in Sources */,
 				E0608D8F183C92EB009469DE /* NTPhotoCell.m in Sources */,
